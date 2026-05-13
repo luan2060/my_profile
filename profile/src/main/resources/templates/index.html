@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Vu Thanh Luan — Java Backend Developer & Aspiring Fullstack Engineer. Second-year CS student skilled in Spring Boot, MySQL, and React."/>
+  <title>Vu Thanh Luan | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Professional font pairing: Sora (display/headings) + DM Sans (body) + JetBrains Mono (code) -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}"/>
+  <style>
+    /* ── Font Override ── */
+    :root {
+      --font-display: 'Sora', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    }
+
+    /* Headings → Sora */
+    h1, h2, h3, h4, h5, h6,
+    .hero-name,
+    .hero-role,
+    .section-heading,
+    .navbar-brand,
+    .footer-brand {
+      font-family: var(--font-display);
+      letter-spacing: -0.03em;
+    }
+
+    /* Code blocks → JetBrains Mono */
+    .code-content,
+    pre, code {
+      font-family: var(--font-mono) !important;
+    }
+
+    /* Nav links → DM Sans medium */
+    .nav-link {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* Hero name — Sora heavy */
+    .hero-name {
+      font-weight: 800;
+      line-height: 1.05;
+    }
+
+    /* Hero role — Sora light */
+    .hero-role {
+      font-weight: 300;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+
+    /* Hero description — DM Sans */
+    .hero-desc {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* Section labels — DM Sans uppercase spaced */
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Section heading — Sora */
+    .section-heading {
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    /* Section sub — DM Sans */
+    .section-sub {
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    /* Skill group label — Sora medium */
+    .skill-group-label {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* About card paragraphs */
+    .about-card p {
+      font-family: var(--font-body);
+      font-size: 0.975rem;
+    }
+
+    /* Info list */
+    .info-list li span {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+
+    /* Buttons */
+    .btn-hero-primary,
+    .btn-hero-outline,
+    .contact-btn {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* Hero badge */
+    .hero-badge {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.85rem;
+    }
+
+    /* Footer */
+    .footer-copy,
+    .footer-link {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    /* Initials avatar */
+    .avatar-initials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--accent, #6366f1), var(--accent2, #8b5cf6));
+      color: #fff;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-md fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#">VTL.dev</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="bi bi-list"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-md-center gap-md-1">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section" id="home">
+  <div class="hero-bg-glow"></div>
+  <canvas id="particleCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.4;"></canvas>
+
+  <div class="container py-5" style="position:relative;z-index:1;">
+    <div class="row align-items-center justify-content-center text-center text-md-start">
+
+      <!-- Text -->
+      <div class="col-md-7 col-lg-6 order-2 order-md-1 mt-4 mt-md-0">
+        <span class="hero-badge">
+          <i class="bi bi-hand-index-thumb me-1"></i> Hi there, I'm
+        </span>
+        <h1 class="hero-name mt-2">Vu Thanh<br/><span class="text-accent">Luan</span></h1>
+        <h2 class="hero-role mt-2 mb-3">Java Backend Developer <span class="dot">·</span> Aspiring Fullstack</h2>
+        <p class="hero-desc mb-4">
+          A second-year Computer Science student on a journey toward
+          <strong style="color:var(--text-primary)">Fullstack Development</strong>. Solid Backend foundation with Java &amp; Spring Boot,
+          actively expanding into Frontend with React.
+        </p>
+        <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-md-start mb-4">
+          <a href="#about" class="btn-hero-primary">
+            <i class="bi bi-person-lines-fill"></i>About Me
+          </a>
+          <a href="#contact" class="btn-hero-outline">
+            <i class="bi bi-send"></i>Get In Touch
+          </a>
+        </div>
+        <!-- Socials -->
+        <div class="social-row justify-content-center justify-content-md-start">
+          <a href="https://www.tiktok.com/@_thahh.laun_?lang=vi-VN" class="social-icon" title="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/vuthanh.luan.52493?locale=vi_VN" class="social-icon" title="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="social-icon" title="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-icon" title="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Avatar -->
+      <div class="col-md-5 col-lg-4 order-1 order-md-2 text-center">
+        <div class="avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <div class="avatar-ring-inner"></div>
+          <div class="avatar-img avatar-initials" id="profileImg">VTL</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-block" id="about">
+  <div class="container">
+    <div class="section-header mb-4 text-center text-md-start">
+      <span class="section-label">01. Introduction</span>
+      <h2 class="section-heading">About Me</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <div class="about-card reveal">
+          <p>Hi! I'm <strong>Vu Thanh Luan</strong>, a second-year Information Technology student with a clear goal: becoming a professional <strong>Fullstack Developer</strong>.</p>
+          <p>My coding journey began with <strong>C/C++</strong> in my first year. As I dug deeper, I discovered my real passion lies in building web applications that serve real users.</p>
+          <p>I now have a solid <strong>Backend</strong> foundation — Java &amp; the Spring ecosystem including Spring Boot, Spring Security, Spring Web, and Spring Data JPA — paired with databases like <strong>MySQL, PostgreSQL</strong>, and <strong>MongoDB</strong>.</p>
+          <p>On the frontend side, I'm proficient in <strong>HTML, CSS, JavaScript, and Bootstrap</strong>, and I'm currently deepening my skills in <strong>React.js</strong>.</p>
+          <p>I follow a professional workflow: <strong>Git</strong> for version control, <strong>Postman</strong> for API testing, and clean code structured around the <strong>MVC</strong> pattern.</p>
+          <p class="mb-0"><em>"There are no shortcuts to mastery"</em> — so I learn every day and keep pushing forward. 🚀</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="code-card reveal">
+          <div class="code-dots">
+            <span class="dot-red"></span>
+            <span class="dot-yellow"></span>
+            <span class="dot-green"></span>
+          </div>
+          <pre class="code-content"><span class="c-kw">public class</span> <span class="c-cl">Developer</span> {
+  <span class="c-kw">private</span> String name =
+    <span class="c-str">"Vu Thanh Luan"</span>;
+  <span class="c-kw">private</span> String role =
+    <span class="c-str">"Java Backend"</span>;
+  <span class="c-kw">private</span> String goal =
+    <span class="c-str">"Fullstack Dev"</span>;
+
+  <span class="c-kw">public void</span> <span class="c-fn">code</span>() {
+    System.out.println(
+      <span class="c-str">"Building... 🚀"</span>
+    );
+  }
+}</pre>
+        </div>
+        <div class="info-card mt-3 reveal">
+          <ul class="info-list">
+            <li><i class="bi bi-mortarboard"></i><span>2nd Year — Computer Science</span></li>
+            <li><i class="bi bi-geo-alt"></i><span>Vietnam</span></li>
+            <li><i class="bi bi-bullseye"></i><span>Goal: Fullstack Developer</span></li>
+            <li><i class="bi bi-book"></i><span>Currently learning: React</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section-block section-dark" id="skills">
+  <div class="container">
+    <div class="section-header text-center mb-5">
+      <span class="section-label">02. Skills</span>
+      <h2 class="section-heading">Technologies I Work With</h2>
+      <p class="section-sub">Proficiency levels built through study and hands-on practice</p>
+    </div>
+    <div class="row g-4">
+
+      <!-- Frontend -->
+      <div class="col-lg-6">
+        <div class="skill-card reveal">
+          <h6 class="skill-group-label"><i class="bi bi-layout-text-window me-2"></i>Frontend</h6>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="skill-logo" alt="HTML5"/>
+                <span>HTML5</span>
+              </div>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="skill-logo" alt="CSS3"/>
+                <span>CSS3</span>
+              </div>
+              <span class="skill-pct">75%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="skill-logo" alt="JS"/>
+                <span>JavaScript</span>
+              </div>
+              <span class="skill-pct">65%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" class="skill-logo" alt="Bootstrap"/>
+                <span>Bootstrap</span>
+              </div>
+              <span class="skill-pct">80%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="skill-logo" alt="React"/>
+                <span>React<span class="badge-learning">Learning</span></span>
+              </div>
+              <span class="skill-pct">25%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar bar-learning" data-width="25"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backend -->
+      <div class="col-lg-6">
+        <div class="skill-card reveal">
+          <h6 class="skill-group-label"><i class="bi bi-server me-2"></i>Backend</h6>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="skill-logo" alt="Java"/>
+                <span>Java</span>
+              </div>
+              <span class="skill-pct">75%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="skill-logo" alt="Spring Boot"/>
+                <span>Spring Boot</span>
+              </div>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="skill-logo" alt="Spring Security"/>
+                <span>Spring Security</span>
+              </div>
+              <span class="skill-pct">60%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="60"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="skill-logo" alt="Spring Data JPA"/>
+                <span>Spring Data JPA</span>
+              </div>
+              <span class="skill-pct">65%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" class="skill-logo" alt="C++"/>
+                <span>C / C++</span>
+              </div>
+              <span class="skill-pct">60%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="60"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Database -->
+      <div class="col-lg-6">
+        <div class="skill-card reveal">
+          <h6 class="skill-group-label"><i class="bi bi-database me-2"></i>Database</h6>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" class="skill-logo" alt="MySQL"/>
+                <span>MySQL</span>
+              </div>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="skill-logo" alt="PostgreSQL"/>
+                <span>PostgreSQL</span>
+              </div>
+              <span class="skill-pct">55%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="55"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" class="skill-logo" alt="MongoDB"/>
+                <span>MongoDB</span>
+              </div>
+              <span class="skill-pct">50%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="50"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <div class="col-lg-6">
+        <div class="skill-card reveal">
+          <h6 class="skill-group-label"><i class="bi bi-tools me-2"></i>Tools</h6>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="skill-logo" alt="Git"/>
+                <span>Git</span>
+              </div>
+              <span class="skill-pct">70%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <div class="d-flex align-items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#FF6C37"/><path d="M5 8h14M5 12h9M5 16h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+                <span>Postman</span>
+              </div>
+              <span class="skill-pct">65%</span>
+            </div>
+            <div class="skill-bar-bg"><div class="skill-bar" data-width="65"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-block contact-section" id="contact">
+  <div class="container">
+    <div class="contact-card reveal text-center">
+      <span class="section-label">03. Contact</span>
+      <h2 class="section-heading mt-1">Let's Connect</h2>
+      <p class="section-sub mb-4">Always open to discussing collaboration opportunities or just having a conversation about tech.</p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="mailto:Vuthanhluan4326@gmail.com" class="contact-btn">
+          <i class="bi bi-envelope-fill"></i> Email
+        </a>
+        <a href="#" class="contact-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.facebook.com/vuthanh.luan.52493?locale=vi_VN" class="contact-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="#" class="contact-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.tiktok.com/@_thahh.laun_?lang=vi-VN" class="contact-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+          TikTok
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+      <div class="footer-brand">VTL.dev</div>
+      <p class="mb-0 footer-copy">© 2026 Vu Thanh Luan · Built with ☕ Java &amp; Spring Boot</p>
+      <div class="d-flex gap-3">
+        <a href="#" class="footer-link">GitHub</a>
+        <a href="https://www.facebook.com/vuthanh.luan.52493?locale=vi_VN" class="footer-link">Facebook</a>
+        <a class="footer-link">Vuthanhluan4326@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script th:src="@{/js/script.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
